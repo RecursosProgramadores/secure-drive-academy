@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, Facebook, MessageCircle } from "lucide-react";
+import libroReclamaciones from "@/assets/libroreclamaciones.jpeg";
+import logo from "@/assets/logo.jpeg";
+import marca from "@/assets/marca.jpeg";
 
 const Footer = () => {
   return (
@@ -9,20 +12,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center transform -skew-x-6">
-                <span className="text-primary-foreground font-heading font-black text-xl transform skew-x-6">
-                  S
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading font-bold text-lg leading-tight text-primary-foreground">
-                  SOUT
-                </span>
-                <span className="font-heading text-xs tracking-widest text-secondary-foreground/80">
-                  TRAINING CENTER
-                </span>
-              </div>
+            <Link to="/" className="flex items-center group">
+              <img 
+                src={logo} 
+                alt="SOUT Training Center" 
+                className="h-16 md:h-20 lg:h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
             <p className="text-secondary-foreground/80 text-sm leading-relaxed">
               Centro de entrenamiento especializado en manejo defensivo, seguridad vial 
@@ -46,6 +41,20 @@ const Footer = () => {
                 <MessageCircle className="w-5 h-5" />
               </a>
             </div>
+            
+            {/* Libro de Reclamaciones */}
+            <a
+              href="https://forms.gle/YaXB1nhvNkimJGUT7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block"
+            >
+              <img
+                src={libroReclamaciones}
+                alt="Libro de Reclamaciones"
+                className="w-40 h-auto object-contain hover:scale-105 transition-transform duration-300"
+              />
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -57,9 +66,7 @@ const Footer = () => {
               {[
                 { name: "Inicio", href: "/" },
                 { name: "Quiénes Somos", href: "/nosotros" },
-                { name: "Servicios", href: "/servicios" },
                 { name: "Cursos", href: "/cursos" },
-                { name: "Clientes", href: "/clientes" },
                 { name: "Blog", href: "/blog" },
                 { name: "Contacto", href: "/contacto" },
               ].map((link) => (
@@ -136,7 +143,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Certifications */}
+        {/* Certifications 
         <div className="mt-12 pt-8 border-t border-secondary-foreground/10">
           <div className="flex flex-wrap items-center justify-center gap-8">
             <div className="text-center">
@@ -158,21 +165,40 @@ const Footer = () => {
               <span className="text-xs text-secondary-foreground/60">Cámara de Comercio</span>
             </div>
           </div>
-        </div>
+        </div>*/}
       </div>
 
       {/* Bottom Bar */}
       <div className="bg-foreground/5">
-        <div className="section-container py-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-secondary-foreground/60">
-            <p>© 2026 SOUT Training Center. Todos los derechos reservados.</p>
-            <div className="flex items-center gap-6">
-              <Link to="/privacidad" className="hover:text-primary transition-colors duration-300">
-                Política de Privacidad
-              </Link>
-              <Link to="/terminos" className="hover:text-primary transition-colors duration-300">
-                Términos de Uso
-              </Link>
+        <div className="section-container py-6">
+          <div className="flex flex-col items-center justify-center gap-4 text-secondary-foreground/60">
+            {/* Developed by - centered */}
+            <a
+              href="https://wa.me/51912603970?text=Hola%20Fly%2C%20vengo%20de%20SOUT%20TRAINING%20CENTER%2C%20estoy%20interesado%20en%20crear%20mi%20p%C3%A1gina%20web%20profesional"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300"
+            >
+              <span className="text-base font-medium">Desarrollado por</span>
+              <img 
+                src={marca} 
+                alt="1FLY" 
+                className="h-8 w-auto object-contain"
+              />
+            </a>
+            
+            {/* Copyright and links */}
+            <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
+              <p>© 2026 SOUT Training Center. Todos los derechos reservados.</p>
+              <div className="hidden md:block text-secondary-foreground/40">|</div>
+              <div className="flex items-center gap-6">
+                <Link to="/politica-de-privacidad" className="hover:text-primary transition-colors duration-300">
+                  Política de Privacidad
+                </Link>
+                <Link to="/terminos-de-uso" className="hover:text-primary transition-colors duration-300">
+                  Términos de Uso
+                </Link>
+              </div>
             </div>
           </div>
         </div>

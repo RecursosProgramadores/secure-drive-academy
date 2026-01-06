@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Target, Eye, Award, Users, CheckCircle, Shield } from "lucide-react";
-import heroImage from "@/assets/hero-training.jpg";
+import heroImage from "@/assets/noosotros.png";
 
 const About = () => {
   return (

@@ -2,7 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
+
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -11,7 +12,9 @@ import Clients from "./pages/Clients";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
-import WhatsAppButton from "./components/WhatsAppButton";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
+import FloatingContactButtons from "./components/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +23,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/nosotros" element={<About />} />
@@ -29,10 +32,12 @@ const App = () => (
           <Route path="/clientes" element={<Clients />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
+          <Route path="/terminos-de-uso" element={<TermsOfUse />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <WhatsAppButton />
-      </BrowserRouter>
+        <FloatingContactButtons />
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );

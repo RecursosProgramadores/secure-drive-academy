@@ -1,0 +1,222 @@
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { 
+  Car, 
+  Shield, 
+  Heart, 
+  Flame, 
+  GraduationCap, 
+  Mountain, 
+  Factory, 
+  Truck,
+  ChevronRight,
+  CheckCircle
+} from "lucide-react";
+
+const services = [
+  {
+    id: 1,
+    title: "Manejo Defensivo",
+    description: "Programas certificados NSC USA para formar conductores responsables y reducir accidentes viales hasta en un 19%.",
+    icon: Car,
+    features: [
+      "Certificación internacional NSC",
+      "Modalidad presencial y virtual",
+      "Instructores experimentados",
+      "Material multimedia interactivo"
+    ],
+    color: "primary"
+  },
+  {
+    id: 2,
+    title: "Seguridad Vial",
+    description: "Campañas y programas integrales de seguridad vial adaptados a las necesidades específicas de cada organización.",
+    icon: Shield,
+    features: [
+      "Diagnóstico de riesgos viales",
+      "Campañas de concientización",
+      "Evaluación de competencias",
+      "Seguimiento y métricas"
+    ],
+    color: "accent"
+  },
+  {
+    id: 3,
+    title: "Primeros Auxilios",
+    description: "Capacitación en técnicas de primeros auxilios, RCP y uso de DEA bajo estándares OSHA y NSC.",
+    icon: Heart,
+    features: [
+      "Certificación OSHA/NSC",
+      "Prácticas con simuladores",
+      "Escenarios reales",
+      "Recertificación anual"
+    ],
+    color: "red"
+  },
+  {
+    id: 4,
+    title: "Prevención de Incendios",
+    description: "Entrenamiento práctico en uso de extintores, evacuación y prevención de incendios industriales.",
+    icon: Flame,
+    features: [
+      "Prácticas con fuego real",
+      "Tipos de extintores",
+      "Planes de evacuación",
+      "Formación de brigadas"
+    ],
+    color: "orange"
+  },
+  {
+    id: 5,
+    title: "Formación de Instructores",
+    description: "Desarrolla instructores internos certificados NSC para multiplicar la capacitación en tu organización.",
+    icon: GraduationCap,
+    features: [
+      "Metodología NSC",
+      "Técnicas pedagógicas",
+      "Material de capacitación",
+      "Certificación NSC USA"
+    ],
+    color: "purple"
+  }
+];
+
+const sectors = [
+  {
+    id: 1,
+    title: "Minería",
+    description: "Superficie, subterránea y exploración. Manejo de vehículos pesados, 4x4 y equipos especializados.",
+    icon: Mountain
+  },
+  {
+    id: 2,
+    title: "Industria",
+    description: "Manufactura, petróleo, gas y construcción. Seguridad integral y prevención de riesgos.",
+    icon: Factory
+  },
+  {
+    id: 3,
+    title: "Transporte",
+    description: "Transporte de carga, pasajeros y materiales peligrosos. Conductores profesionales certificados.",
+    icon: Truck
+  }
+];
+
+const getColorClasses = (color: string) => {
+  const colors: Record<string, { bg: string; icon: string; badge: string }> = {
+    primary: { bg: "bg-primary/5", icon: "text-primary", badge: "bg-primary" },
+    accent: { bg: "bg-accent/5", icon: "text-accent", badge: "bg-accent" },
+    red: { bg: "bg-red-500/5", icon: "text-red-500", badge: "bg-red-500" },
+    orange: { bg: "bg-orange-500/5", icon: "text-orange-500", badge: "bg-orange-500" },
+    purple: { bg: "bg-purple-500/5", icon: "text-purple-500", badge: "bg-purple-500" }
+  };
+  return colors[color] || colors.primary;
+};
+
+const ServicesSection = () => {
+  return (
+    <section className="section-padding bg-muted">
+      <div className="section-container">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block font-heading text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+            Nuestros Servicios
+          </span>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            Soluciones Integrales en{" "}
+            <span className="text-primary">Seguridad</span> y Capacitación
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Ofrecemos programas de capacitación personalizados para los sectores minero, 
+            industrial y de transporte, con certificaciones internacionales y metodologías probadas.
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {services.map((service) => {
+            const Icon = service.icon;
+            const colors = getColorClasses(service.color);
+            
+            return (
+              <div
+                key={service.id}
+                className="bg-card rounded-2xl p-8 shadow-lg border border-border hover:shadow-xl transition-all duration-300 group"
+              >
+                {/* Icon */}
+                <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className={`w-8 h-8 ${colors.icon}`} />
+                </div>
+
+                {/* Title */}
+                <h3 className="font-heading text-xl font-bold text-foreground mb-3">
+                  {service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-muted-foreground text-sm mb-6">
+                  {service.description}
+                </p>
+
+                {/* Features */}
+                <ul className="space-y-3 mb-6">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm">
+                      <CheckCircle className={`w-4 h-4 ${colors.icon} flex-shrink-0 mt-0.5`} />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <Link to="/contacto">
+                  <Button variant="outline" className="w-full group/btn">
+                    Más Información
+                    <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Sectors Section */}
+        <div className="bg-background rounded-3xl p-8 md:p-12 border border-border">
+          <div className="text-center mb-12">
+            <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Sectores que Atendemos
+            </h3>
+            <p className="text-muted-foreground">
+              Experiencia especializada en los sectores más exigentes del país.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {sectors.map((sector) => {
+              const Icon = sector.icon;
+              
+              return (
+                <div
+                  key={sector.id}
+                  className="text-center group"
+                >
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+                    <Icon className="w-10 h-10 text-primary" />
+                  </div>
+                  <h4 className="font-heading text-xl font-bold text-foreground mb-3">
+                    {sector.title}
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    {sector.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ServicesSection;

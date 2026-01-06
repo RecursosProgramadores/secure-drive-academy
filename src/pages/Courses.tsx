@@ -17,9 +17,9 @@ import {
   Truck,
   Mountain,
 } from "lucide-react";
-import drivingTraining from "@/assets/driving-training.jpg";
-import firstAidTraining from "@/assets/first-aid-training.jpg";
-import fireTraining from "@/assets/fire-training.jpg";
+import drivingTraining from "@/assets/manejo.png";
+import firstAidTraining from "@/assets/rcp.png";
+import fireTraining from "@/assets/extintores.png";
 
 const courses = [
   {
@@ -291,13 +291,26 @@ const Courses = () => {
                       ))}
                     </div>
 
-                    {/* CTA */}
-                    <Link to="/contacto">
-                      <Button variant="outline" className="w-full group/btn">
-                        Solicitar Información
-                        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
+                    {/* CTA Buttons */}
+                    <div className="flex gap-2">
+                      <a
+                        href={`https://wa.me/51977959001?text=${encodeURIComponent(
+                          `Hola, estoy interesado en el curso: ${course.title}\n\nDuración: ${course.duration}\nCertificación: ${course.certification}\nModalidad: ${course.modality.join(", ")}\n\n¿Podrían brindarme más información?`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1"
+                      >
+                        <Button variant="default" className="w-full">
+                          Iniciar
+                        </Button>
+                      </a>
+                      <Link to="/contacto" className="flex-1">
+                        <Button variant="outline" className="w-full">
+                          Contacto
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

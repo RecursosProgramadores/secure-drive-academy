@@ -1,32 +1,35 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Star, Quote } from "lucide-react";
+import ausencoLogo from "@/assets/ausenco.jpg";
+import fluorLogo from "@/assets/fluor.jpg";
+import saegLogo from "@/assets/saeg.jpg";
 
 const clients = [
-  "Ausenco",
-  "Reliable Controls",
-  "Planvital",
-  "SFO Drilling",
-  "Aurifera Tres Cruces",
-  "G&G Perforaciones",
-  "Salus Laboris",
-  "Grupo Mejia",
-  "G&C",
-  "SAEG Security",
-  "GEvandina Exploraciones",
-  "Linra",
-  "Qefa",
-  "Core Tech",
-  "Cultinor",
-  "Cobra",
-  "Fluor",
-  "ALS",
-  "Engie",
-  "Cenel",
-  "Valor Sostenible",
-  "Volcan",
-  "A&M",
-  "Explomin",
+  { name: "Ausenco", logo: ausencoLogo },
+  { name: "Reliable Controls", logo: null },
+  { name: "Planvital", logo: null },
+  { name: "SFO Drilling", logo: null },
+  { name: "Aurifera Tres Cruces", logo: null },
+  { name: "G&G Perforaciones", logo: null },
+  { name: "Salus Laboris", logo: null },
+  { name: "Grupo Mejia", logo: null },
+  { name: "G&C", logo: null },
+  { name: "SAEG Security", logo: saegLogo },
+  { name: "GEvandina Exploraciones", logo: null },
+  { name: "Linra", logo: null },
+  { name: "Qefa", logo: null },
+  { name: "Core Tech", logo: null },
+  { name: "Cultinor", logo: null },
+  { name: "Cobra", logo: null },
+  { name: "Fluor", logo: fluorLogo },
+  { name: "ALS", logo: null },
+  { name: "Engie", logo: null },
+  { name: "Cenel", logo: null },
+  { name: "Valor Sostenible", logo: null },
+  { name: "Volcan", logo: null },
+  { name: "A&M", logo: null },
+  { name: "Explomin", logo: null },
 ];
 
 const testimonials = [
@@ -105,15 +108,23 @@ const Clients = () => {
                 nuestros programas de capacitación certificados.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
               {clients.map((client, index) => (
                 <div
                   key={index}
-                  className="bg-muted rounded-xl p-6 flex items-center justify-center min-h-[100px] hover:bg-primary/10 hover:border-primary border border-transparent transition-all duration-300 group"
+                  className="bg-white rounded-xl p-6 flex items-center justify-center min-h-[140px] hover:shadow-xl hover:border-primary border-2 border-gray-100 transition-all duration-300 group"
                 >
-                  <span className="font-heading font-bold text-sm text-center text-muted-foreground group-hover:text-primary transition-colors duration-300">
-                    {client}
-                  </span>
+                  {client.logo ? (
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="w-full h-auto object-contain max-h-20 filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  ) : (
+                    <span className="font-heading font-bold text-sm text-center text-gray-600 group-hover:text-primary transition-colors duration-300">
+                      {client.name}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>

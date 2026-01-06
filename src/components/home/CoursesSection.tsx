@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Clock, Users, Award, ChevronRight } from "lucide-react";
-import drivingTraining from "@/assets/driving-training.jpg";
-import firstAidTraining from "@/assets/first-aid-training.jpg";
-import fireTraining from "@/assets/fire-training.jpg";
+import drivingTraining from "@/assets/manejo.png";
+import firstAidTraining from "@/assets/rcp.png";
+import fireTraining from "@/assets/extintores.png";
 
 const courses = [
   {
@@ -13,6 +13,7 @@ const courses = [
       "Programa certificado por el National Safety Council (NSC) de Estados Unidos. Reduce accidentes vehiculares hasta un 19%.",
     duration: "6-8 horas",
     audience: "Conductores profesionales",
+    modality: "Presencial y Virtual",
     image: drivingTraining,
     certification: "NSC USA",
     featured: true,
@@ -24,6 +25,7 @@ const courses = [
       "Capacitación en técnicas de primeros auxilios, reanimación cardiopulmonar y uso de desfibrilador externo automático.",
     duration: "8 horas",
     audience: "Todo personal",
+    modality: "Presencial y Virtual",
     image: firstAidTraining,
     certification: "OSHA/NSC",
     featured: true,
@@ -35,6 +37,7 @@ const courses = [
       "Entrenamiento práctico en prevención y combate de incendios. Uso correcto de extintores según tipo de fuego.",
     duration: "4 horas",
     audience: "Brigadistas y personal",
+    modality: "Presencial",
     image: fireTraining,
     certification: "Certificado",
     featured: true,
@@ -104,13 +107,26 @@ const CoursesSection = () => {
                   </div>
                 </div>
 
-                {/* CTA */}
-                <Link to={`/cursos`}>
-                  <Button variant="outline" className="w-full group/btn">
-                    Ver Detalles
-                    <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+                {/* CTA Buttons */}
+                <div className="flex gap-2">
+                  <a
+                    href={`https://wa.me/51977959001?text=${encodeURIComponent(
+                      `Hola, estoy interesado en el curso: ${course.title}\n\nDuración: ${course.duration}\nCertificación: ${course.certification}\nModalidad: ${course.modality}\n\n¿Podrían brindarme más información?`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    <Button variant="default" className="w-full">
+                      Iniciar
+                    </Button>
+                  </a>
+                  <Link to="/contacto" className="flex-1">
+                    <Button variant="outline" className="w-full">
+                      Contacto
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

@@ -3,13 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.jpeg";
 
 const navigation = [
   { name: "Inicio", href: "/" },
   { name: "Quiénes Somos", href: "/nosotros" },
-  { name: "Servicios", href: "/servicios" },
   { name: "Cursos", href: "/cursos" },
-  { name: "Clientes", href: "/clientes" },
   { name: "Blog", href: "/blog" },
   { name: "Contacto", href: "/contacto" },
 ];
@@ -27,6 +26,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <header
       className={cn(
@@ -39,28 +42,12 @@ const Header = () => {
       <div className="section-container">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center transform -skew-x-6 group-hover:skew-x-0 transition-transform duration-300">
-                <span className="text-primary-foreground font-heading font-black text-xl transform skew-x-6 group-hover:skew-x-0 transition-transform duration-300">
-                  S
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className={cn(
-                "font-heading font-bold text-lg leading-tight transition-colors duration-300",
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              )}>
-                SOUT
-              </span>
-              <span className={cn(
-                "font-heading text-xs tracking-widest transition-colors duration-300",
-                isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
-              )}>
-                TRAINING CENTER
-              </span>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="SOUT Training Center" 
+              className="h-16 md:h-20 lg:h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -70,7 +57,7 @@ const Header = () => {
                 key={item.name}
                 to={item.href}
                 className={cn(
-                  "px-4 py-2 font-heading text-sm font-medium rounded-lg transition-all duration-300 hover:bg-primary/10",
+                  "px-4 py-2 font-heading text-base font-medium rounded-lg transition-all duration-300 hover:bg-primary/10",
                   location.pathname === item.href
                     ? "text-primary"
                     : isScrolled
