@@ -1,5 +1,5 @@
 import { Shield, Award, Users } from "lucide-react";
-import heroImage from "@/assets/noosotros.png";
+import heroImage from "@/assets/historial.jpeg";
 
 const HistorySection = () => {
   return (
