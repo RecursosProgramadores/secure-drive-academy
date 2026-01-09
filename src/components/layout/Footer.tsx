@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, Facebook, MessageCircle } from "lucide-react";
 import libroReclamaciones from "@/assets/libroreclamaciones.jpeg";
-import logo from "@/assets/logo.jpeg";
-import marca from "@/assets/marca.jpeg";
+import logo from "@/assets/logoblanco.png";
+import marca from "@/assets/logo.svg";
+import wstp from "@/assets/wstp.svg";
 
 const Footer = () => {
   return (
@@ -36,9 +37,9 @@ const Footer = () => {
                 href="https://wa.me/51977959001"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-secondary-foreground/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300"
+                className="w-10 h-10 bg-secondary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300 p-1.5"
               >
-                <MessageCircle className="w-5 h-5" />
+                <img src={wstp} alt="WSTP" className="w-full h-full object-contain" />
               </a>
             </div>
             
@@ -67,7 +68,6 @@ const Footer = () => {
                 { name: "Inicio", href: "/" },
                 { name: "Quiénes Somos", href: "/nosotros" },
                 { name: "Cursos", href: "/cursos" },
-                { name: "Blog", href: "/blog" },
                 { name: "Contacto", href: "/contacto" },
               ].map((link) => (
                 <li key={link.name}>
@@ -170,24 +170,9 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="bg-foreground/5">
-        <div className="section-container py-6">
-          <div className="flex flex-col items-center justify-center gap-4 text-secondary-foreground/60">
-            {/* Developed by - centered */}
-            <a
-              href="https://wa.me/51912603970?text=Hola%20Fly%2C%20vengo%20de%20SOUT%20TRAINING%20CENTER%2C%20estoy%20interesado%20en%20crear%20mi%20p%C3%A1gina%20web%20profesional"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300"
-            >
-              <span className="text-base font-medium">Desarrollado por</span>
-              <img 
-                src={marca} 
-                alt="1FLY" 
-                className="h-8 w-auto object-contain"
-              />
-            </a>
-            
-            {/* Copyright and links */}
+        <div className="section-container py-4">
+          <div className="flex flex-col items-center justify-center gap-2 text-secondary-foreground/60">
+            {/* Copyright and links - at top */}
             <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
               <p>© 2026 SOUT Training Center. Todos los derechos reservados.</p>
               <div className="hidden md:block text-secondary-foreground/40">|</div>
@@ -200,6 +185,21 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
+            
+            {/* Developed by - at bottom */}
+            <a
+              href="https://wa.me/51912603970?text=Hola%20Fly%2C%20vengo%20de%20SOUT%20TRAINING%20CENTER%2C%20estoy%20interesado%20en%20crear%20mi%20p%C3%A1gina%20web%20profesional"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300"
+            >
+              <span className="text-sm font-medium">Desarrollado por</span>
+              <img 
+                src={marca} 
+                alt="1FLY" 
+                className="h-8 w-auto object-contain"
+              />
+            </a>
           </div>
         </div>
       </div>

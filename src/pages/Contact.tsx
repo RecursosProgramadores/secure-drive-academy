@@ -14,6 +14,7 @@ import {
   Facebook,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import wstp from "@/assets/wstp.svg";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -172,17 +173,17 @@ const Contact = () => {
                     href="https://facebook.com/SOUTTrainingCenter"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                    className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 hover:shadow-lg hover:scale-110 transition-all duration-300 border-2 border-blue-600"
                   >
-                    <Facebook className="w-6 h-6" />
+                    <Facebook className="w-7 h-7 text-white" />
                   </a>
                   <a
                     href="https://wa.me/51977959001"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
+                    className="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center hover:bg-green-600 hover:shadow-lg hover:scale-110 transition-all duration-300 p-2.5 border-2 border-green-500"
                   >
-                    <MessageCircle className="w-6 h-6" />
+                    <img src={wstp} alt="WSTP" className="w-full h-full object-contain" />
                   </a>
                 </div>
 

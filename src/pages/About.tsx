@@ -2,8 +2,11 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Target, Eye, Award, Users, CheckCircle, Shield } from "lucide-react";
+import { Target, Eye, CheckCircle } from "lucide-react";
 import heroImage from "@/assets/historial.jpeg";
+import nscLogo from "@/assets/nsc-menu.png";
+import marcaLogo from "@/assets/ccl.png";
+import saegLogo from "@/assets/hodelpe.jpg";
 
 const About = () => {
   return (
@@ -43,33 +46,19 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
               <div>
                 <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Nuestra Historia
+                  SOUT S.A.C. (SOUT TRAINING CENTER)
                 </h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  SOUT Training Center fue fundado por profesionales con amplia experiencia 
-                  en el sector de seguridad vial y manejo defensivo, en respuesta a las 
-                  crecientes necesidades de capacitación especializada para los sectores 
-                  de alto riesgo en Perú.
+                  Somos un centro de entrenamiento, dedicada a la capacitación y certificación de operadores y conductores de equipos, en temas relacionados al Manejo Defensivo y Seguridad y Salud en el Trabajo.
                 </p>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Desde nuestros inicios, nos hemos comprometido con la excelencia, 
-                  obteniendo certificaciones internacionales del National Safety Council 
-                  (NSC) de Estados Unidos y homologaciones de Hodelpe, convirtiéndonos 
-                  en un referente nacional en capacitación de seguridad vial.
+                  Ayudamos a empresas a reducir estadísticas de accidentes viales, diseñando estrategias y capacitaciones específicas de Manejo Defensivo, Certificadas por el NSC, acorde a las condiciones y factores reales de trabajo, en operaciones mineras, petroleras e industria en general.
+                  Contamos con profesionales, especialistas en Manejo Defensivo, Seguridad y Salud en el Trabajo y Primeros Auxilios. Orientamos la formación de conductores y operadores a Gestionar las 3 condiciones de manejo: el Conductor Como Persona, El equipo o vehículo como herramienta de trabajo e interactuar con las condiciones que nos rodean.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <div className="flex items-center gap-2 bg-accent/10 px-4 py-2 rounded-full">
-                    <Shield className="w-5 h-5 text-accent" />
-                    <span className="font-heading font-semibold text-sm">NSC USA</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
-                    <Award className="w-5 h-5 text-primary" />
-                    <span className="font-heading font-semibold text-sm">Hodelpe</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-secondary/10 px-4 py-2 rounded-full">
-                    <Users className="w-5 h-5 text-secondary" />
-                    <span className="font-heading font-semibold text-sm">CCL</span>
-                  </div>
+                <div className="flex gap-6 md:gap-8 items-center">
+                  <img src={nscLogo} alt="NSC USA" className="h-32 w-32 md:h-40 md:w-40 object-contain" />
+                  <img src={saegLogo} alt="Hodelpe" className="h-32 w-32 md:h-40 md:w-40 object-contain" />
+                  <img src={marcaLogo} alt="CCL" className="h-32 w-32 md:h-40 md:w-40 object-contain" />
                 </div>
               </div>
               <div className="relative">

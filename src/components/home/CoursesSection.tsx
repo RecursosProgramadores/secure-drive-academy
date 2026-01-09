@@ -1,20 +1,28 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Clock, Users, Award, ChevronRight } from "lucide-react";
-import drivingTraining from "@/assets/manejo.png";
+import curso1 from "@/assets/curso1.jpeg";
 import firstAidTraining from "@/assets/rcp.png";
-import fireTraining from "@/assets/extintores.png";
+import fireTraining from "@/assets/fire-training.jpg";
+import competencia from "@/assets/competencia.jpeg";
+import carro from "@/assets/carro.jpeg";
+import cuatrimoto from "@/assets/cuatrimoto.jpeg";
+import carrousel2 from "@/assets/carrousel2.jpeg";
+import defensivo from "@/assets/defensivo.jpeg";
+import fatigaImg from "@/assets/fatiga.jpeg";
+import instructorImg from "@/assets/intructor.jpeg";
+import practicaslima from "@/assets/modelolima.jpeg";
 
 const courses = [
   {
     id: 1,
-    title: "Manejo Defensivo NSC",
+    title: "Manejo Defensivo NSC 6-8 Horas",
     description:
-      "Programa certificado por el National Safety Council (NSC) de Estados Unidos. Reduce accidentes vehiculares hasta un 19%.",
+      "Programa certificado por el National Safety Council de Estados Unidos. Basado en investigación, multimedia e interactivo. Flexible en duraciones de 4, 6 u 8 horas.",
     duration: "6-8 horas",
-    audience: "Conductores profesionales",
+    audience: "Conductores profesionales 18+",
     modality: "Presencial y Virtual",
-    image: drivingTraining,
+    image: curso1,
     certification: "NSC USA",
     featured: true,
   },
@@ -22,7 +30,7 @@ const courses = [
     id: 2,
     title: "Primeros Auxilios - RCP - DEA",
     description:
-      "Capacitación en técnicas de primeros auxilios, reanimación cardiopulmonar y uso de desfibrilador externo automático.",
+      "Capacitación en técnicas de primeros auxilios, reanimación cardiopulmonar y uso de desfibrilador externo automático. Cumple normas OSHA.",
     duration: "8 horas",
     audience: "Todo personal",
     modality: "Presencial y Virtual",
@@ -32,13 +40,13 @@ const courses = [
   },
   {
     id: 3,
-    title: "Uso y Manejo de Extintores",
+    title: "Prácticas de Manejo 4x4 por Horas - Modelo Mina",
     description:
-      "Entrenamiento práctico en prevención y combate de incendios. Uso correcto de extintores según tipo de fuego.",
-    duration: "4 horas",
-    audience: "Brigadistas y personal",
+      "Entrenamiento práctico en circuito modelo mina. Disponible todos los días en Lima. Sesiones por horas adaptadas a tus necesidades.",
+    duration: "Flexible por horas",
+    audience: "Conductores, operadores",
     modality: "Presencial",
-    image: fireTraining,
+    image: practicaslima,
     certification: "Certificado",
     featured: true,
   },

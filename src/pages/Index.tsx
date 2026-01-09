@@ -6,8 +6,8 @@ import CoursesSection from "@/components/home/CoursesSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import HistorySection from "@/components/home/HistorySection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import ClientsCarousel from "@/components/home/ClientsCarousel";
 import CTASection from "@/components/home/CTASection";
+import ClientsMarquee from "@/components/home/ClientsMarquee";
 
 const Index = () => {
   return (
@@ -21,7 +21,7 @@ const Index = () => {
         <HistorySection />
         <TestimonialsSection />
         <CTASection />
-        <ClientsCarousel />
+        <ClientsMarquee />
       </main>
       <Footer />
     </div>

@@ -164,13 +164,13 @@ const Services = () => {
           <div className="section-container">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Sectores que Atendemos
+                Sectores que Atendemos ff fdfddf 
               </h2>
               <p className="text-muted-foreground">
                 Experiencia especializada en los sectores más exigentes del país.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {[
                 {
                   title: "Minería",
@@ -181,13 +181,25 @@ const Services = () => {
                 {
                   title: "Industria",
                   description:
-                    "Manufactura, petróleo, gas y construcción. Seguridad integral y prevención de riesgos.",
+                    "Manufactura, construcción y montaje. Seguridad integral y prevención de riesgos laborales.",
                   color: "accent",
                 },
                 {
                   title: "Transporte",
                   description:
                     "Transporte de carga, pasajeros y materiales peligrosos. Conductores profesionales certificados.",
+                  color: "primary",
+                },
+                {
+                  title: "Energía",
+                  description:
+                    "Petróleo, gas y energías renovables. Operación segura de vehículos en áreas remotas y de alto riesgo.",
+                  color: "accent",
+                },
+                {
+                  title: "Agrícola",
+                  description:
+                    "Agroindustria y transporte agrícola. Manejo seguro de maquinaria y vehículos en zonas rurales.",
                   color: "primary",
                 },
               ].map((sector, index) => (

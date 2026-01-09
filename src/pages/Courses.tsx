@@ -17,9 +17,17 @@ import {
   Truck,
   Mountain,
 } from "lucide-react";
-import drivingTraining from "@/assets/manejo.png";
+import curso1 from "@/assets/curso1.jpeg";
 import firstAidTraining from "@/assets/rcp.png";
-import fireTraining from "@/assets/extintores.png";
+import fireTraining from "@/assets/fire-training.jpg";
+import competencia from "@/assets/competencia.jpeg";
+import carro from "@/assets/carro.jpeg";
+import cuatrimoto from "@/assets/cuatrimoto.jpeg";
+import carrousel2 from "@/assets/carrousel2.jpeg";
+import defensivo from "@/assets/defensivo.jpeg";
+import fatigaImg from "@/assets/fatiga.jpeg";
+import instructorImg from "@/assets/intructor.jpeg";
+import practicaslima from "@/assets/modelolima.jpeg";
 
 const courses = [
   {
@@ -31,7 +39,7 @@ const courses = [
     audience: "Conductores profesionales 18+",
     modality: ["presencial", "virtual"],
     sector: ["mineria", "industria", "transporte"],
-    image: drivingTraining,
+    image: curso1,
     certification: "NSC USA",
     icon: Car,
   },
@@ -44,7 +52,7 @@ const courses = [
     audience: "Conductores de camiones/buses",
     modality: ["presencial"],
     sector: ["transporte"],
-    image: drivingTraining,
+    image: defensivo,
     certification: "NSC USA",
     icon: Truck,
   },
@@ -57,7 +65,7 @@ const courses = [
     audience: "Operadores mineros, industriales",
     modality: ["presencial"],
     sector: ["mineria", "industria"],
-    image: drivingTraining,
+    image: carro,
     certification: "NSC USA",
     icon: Mountain,
   },
@@ -96,7 +104,7 @@ const courses = [
     audience: "Operadores mineros",
     modality: ["presencial"],
     sector: ["mineria"],
-    image: drivingTraining,
+    image: carrousel2,
     certification: "Certificado",
     icon: Mountain,
   },
@@ -109,7 +117,7 @@ const courses = [
     audience: "Conductores profesionales",
     modality: ["presencial", "virtual", "grabado"],
     sector: ["mineria", "industria", "transporte"],
-    image: drivingTraining,
+    image: fatigaImg,
     certification: "Certificado",
     icon: AlertTriangle,
   },
@@ -122,7 +130,7 @@ const courses = [
     audience: "Instructores, supervisores SSOMA",
     modality: ["presencial"],
     sector: ["mineria", "industria", "transporte"],
-    image: firstAidTraining,
+    image: instructorImg,
     certification: "NSC USA",
     icon: GraduationCap,
   },
@@ -135,7 +143,7 @@ const courses = [
     audience: "Operadores de ATVs",
     modality: ["presencial"],
     sector: ["mineria", "industria"],
-    image: drivingTraining,
+    image: cuatrimoto,
     certification: "NSC USA",
     icon: Car,
   },
@@ -148,9 +156,22 @@ const courses = [
     audience: "RRHH, Supervisores",
     modality: ["presencial"],
     sector: ["mineria", "industria", "transporte"],
-    image: firstAidTraining,
+    image: competencia,
     certification: "Certificado",
     icon: Users,
+  },
+  {
+    id: 11,
+    title: "Prácticas de Manejo 4x4 por Horas - Modelo Mina",
+    description:
+      "Entrenamiento práctico en circuito modelo mina. Disponible todos los días en Lima. Sesiones por horas adaptadas a tus necesidades.",
+    duration: "Flexible por horas",
+    audience: "Conductores, operadores",
+    modality: ["presencial"],
+    sector: ["mineria", "industria"],
+    image: practicaslima,
+    certification: "Certificado",
+    icon: Mountain,
   },
 ];
 

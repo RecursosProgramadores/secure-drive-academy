@@ -1,4 +1,5 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import whatsappIcon from "@/assets/wstp.svg";
 
 const FloatingContactButtons = () => {
   const whatsappNumber = "51977959001";
@@ -35,7 +36,7 @@ const FloatingContactButtons = () => {
           className="flex items-center justify-center w-16 h-16 bg-[#25D366] hover:bg-[#20BA5C] text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 animate-pulse-glow"
           aria-label="Contactar por WhatsApp"
         >
-          <MessageCircle className="w-7 h-7 fill-current" />
+          <img src={whatsappIcon} alt="WhatsApp" className="w-8 h-8" />
         </a>
         {/* Tooltip */}
         <div className="absolute right-20 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">

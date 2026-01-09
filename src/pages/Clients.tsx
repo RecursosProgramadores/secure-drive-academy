@@ -4,9 +4,15 @@ import { Star, Quote } from "lucide-react";
 import ausencoLogo from "@/assets/ausenco.jpg";
 import fluorLogo from "@/assets/fluor.jpg";
 import saegLogo from "@/assets/saeg.jpg";
+import hodelpe from "@/assets/hodelpe.jpg";
+import ccl from "@/assets/ccl.png";
 
 const clients = [
   { name: "Ausenco", logo: ausencoLogo },
+  { name: "Fluor", logo: fluorLogo },
+  { name: "SAEG Security", logo: saegLogo },
+  { name: "Hodelpe", logo: hodelpe },
+  { name: "CCL", logo: ccl },
   { name: "Reliable Controls", logo: null },
   { name: "Planvital", logo: null },
   { name: "SFO Drilling", logo: null },
@@ -14,22 +20,38 @@ const clients = [
   { name: "G&G Perforaciones", logo: null },
   { name: "Salus Laboris", logo: null },
   { name: "Grupo Mejia", logo: null },
-  { name: "G&C", logo: null },
-  { name: "SAEG Security", logo: saegLogo },
-  { name: "GEvandina Exploraciones", logo: null },
+  { name: "G&C Mining", logo: null },
+  { name: "Gevandina Exploraciones", logo: null },
   { name: "Linra", logo: null },
   { name: "Qefa", logo: null },
   { name: "Core Tech", logo: null },
   { name: "Cultinor", logo: null },
-  { name: "Cobra", logo: null },
-  { name: "Fluor", logo: fluorLogo },
-  { name: "ALS", logo: null },
-  { name: "Engie", logo: null },
+  { name: "Cobra Instalaciones", logo: null },
+  { name: "ALS Global", logo: null },
+  { name: "Engie Energía", logo: null },
   { name: "Cenel", logo: null },
   { name: "Valor Sostenible", logo: null },
-  { name: "Volcan", logo: null },
-  { name: "A&M", logo: null },
+  { name: "Volcan Compañía Minera", logo: null },
+  { name: "A&M Consultores", logo: null },
   { name: "Explomin", logo: null },
+  { name: "Minsur", logo: null },
+  { name: "Southern Copper", logo: null },
+  { name: "Antamina", logo: null },
+  { name: "Las Bambas", logo: null },
+  { name: "Cerro Verde", logo: null },
+  { name: "Yanacocha", logo: null },
+  { name: "Buenaventura", logo: null },
+  { name: "Pan American Silver", logo: null },
+  { name: "Hochschild Mining", logo: null },
+  { name: "Nexa Resources", logo: null },
+  { name: "Glencore Perú", logo: null },
+  { name: "Anglo American", logo: null },
+  { name: "Barrick Gold", logo: null },
+  { name: "Gold Fields", logo: null },
+  { name: "Newmont Mining", logo: null },
+  { name: "Rio Tinto", logo: null },
+  { name: "BHP Billiton", logo: null },
+  { name: "Freeport-McMoRan", logo: null },
 ];
 
 const testimonials = [
@@ -96,39 +118,107 @@ const Clients = () => {
           </div>
         </section>
 
-        {/* Clients Grid */}
-        <section className="section-padding bg-background">
-          <div className="section-container">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Nuestros Clientes Corporativos
-              </h2>
-              <p className="text-muted-foreground">
-                Empresas líderes en minería, industria y transporte que han elegido 
-                nuestros programas de capacitación certificados.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-              {clients.map((client, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-6 flex items-center justify-center min-h-[140px] hover:shadow-xl hover:border-primary border-2 border-gray-100 transition-all duration-300 group"
-                >
-                  {client.logo ? (
-                    <img
-                      src={client.logo}
-                      alt={client.name}
-                      className="w-full h-auto object-contain max-h-20 filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                    />
-                  ) : (
-                    <span className="font-heading font-bold text-sm text-center text-gray-600 group-hover:text-primary transition-colors duration-300">
-                      {client.name}
-                    </span>
-                  )}
+        {/* Clients Marquee */}
+        <section className="section-padding bg-background overflow-hidden">
+          <div className="mb-16 text-center">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Nuestros Clientes Corporativos
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Empresas líderes en minería, industria y transporte que han elegido 
+              nuestros programas de capacitación certificados.
+            </p>
+          </div>
+
+          {/* Primera fila - Izquierda a Derecha */}
+          <div className="relative mb-8">
+            <div className="flex animate-marquee-left hover:pause-marquee">
+              {/* Duplicamos los clientes 3 veces para continuidad */}
+              {[...Array(3)].map((_, repeatIndex) => (
+                <div key={repeatIndex} className="flex">
+                  {clients.slice(0, 22).map((client, index) => (
+                    <div
+                      key={`${repeatIndex}-${index}`}
+                      className="flex-shrink-0 mx-6 w-40 h-28 bg-white rounded-xl shadow-md border-2 border-gray-100 flex items-center justify-center p-4 hover:border-primary hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+                    >
+                      {client.logo ? (
+                        <img
+                          src={client.logo}
+                          alt={client.name}
+                          className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                        />
+                      ) : (
+                        <span className="font-heading font-bold text-sm text-center text-gray-600 group-hover:text-primary transition-colors duration-300">
+                          {client.name}
+                        </span>
+                      )}
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Segunda fila - Derecha a Izquierda */}
+          <div className="relative">
+            <div className="flex animate-marquee-right hover:pause-marquee">
+              {/* Duplicamos los clientes 3 veces para continuidad */}
+              {[...Array(3)].map((_, repeatIndex) => (
+                <div key={repeatIndex} className="flex">
+                  {clients.slice(22, 44).map((client, index) => (
+                    <div
+                      key={`${repeatIndex}-${index}`}
+                      className="flex-shrink-0 mx-6 w-40 h-28 bg-white rounded-xl shadow-md border-2 border-gray-100 flex items-center justify-center p-4 hover:border-primary hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+                    >
+                      {client.logo ? (
+                        <img
+                          src={client.logo}
+                          alt={client.name}
+                          className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                        />
+                      ) : (
+                        <span className="font-heading font-bold text-sm text-center text-gray-600 group-hover:text-primary transition-colors duration-300">
+                          {client.name}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <style>{`
+            @keyframes marquee-left {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-33.333%);
+              }
+            }
+
+            @keyframes marquee-right {
+              0% {
+                transform: translateX(-33.333%);
+              }
+              100% {
+                transform: translateX(0);
+              }
+            }
+
+            .animate-marquee-left {
+              animation: marquee-left 40s linear infinite;
+            }
+
+            .animate-marquee-right {
+              animation: marquee-right 40s linear infinite;
+            }
+
+            .hover\\:pause-marquee:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
         </section>
 
         {/* Testimonials */}

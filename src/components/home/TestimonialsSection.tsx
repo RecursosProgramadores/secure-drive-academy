@@ -1,9 +1,26 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 const testimonials = [
   {
     id: 1,
+    name: "Carlos Castro",
+    role: "Representante",
+    company: "SFP Drilling",
+    content:
+      "El curso ha reducido una enorme brecha que teníamos antes. Lo que más nos gusta es su disponibilidad todos los días en Lima, Trujillo y Arequipa para poder programar a nuestros colaboradores.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Jean Pierre",
+    role: "Representante",
+    company: "Neftis Secure",
+    content:
+      "Somos aliados hace 3 años y las capacitaciones que brinda SOUT son efectivas. Nos han ayudado a la reducción de accidentes así como cumplir con la exigencia de requisitos de nuestros clientes.",
+    rating: 5,
+  },
+  {
+    id: 3,
     name: "Anayka Cruzate",
     role: "Jefa de Seguridad",
     company: "Explomin",
@@ -12,7 +29,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    id: 2,
+    id: 4,
     name: "Neyruth Huamani Taipe",
     role: "Coordinador SSOMA",
     company: "Volcan Compañía Minera",
@@ -20,28 +37,9 @@ const testimonials = [
       "Excelente equipo de instructores con amplia experiencia en el sector minero. Los cursos de manejo 4x4 han mejorado significativamente las competencias de nuestros operadores.",
     rating: 5,
   },
-  {
-    id: 3,
-    name: "Carlos Mendoza",
-    role: "Gerente de Operaciones",
-    company: "Ausenco",
-    content:
-      "La calidad del entrenamiento y las certificaciones internacionales que otorga SOUT nos dan la confianza de que nuestro personal está preparado para operar de manera segura.",
-    rating: 5,
-  },
 ];
 
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
   return (
     <section className="section-padding bg-secondary text-secondary-foreground overflow-hidden">
       <div className="section-container">
@@ -60,80 +58,46 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        {/* Testimonials Slider */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Quote Icon */}
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-primary rounded-full flex items-center justify-center z-10">
-            <Quote className="w-8 h-8 text-primary-foreground" />
-          </div>
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="bg-background rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative"
+            >
+              {/* Quote Icon */}
+              <div className="absolute -top-3 left-6 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                <Quote className="w-5 h-5 text-primary-foreground" />
+              </div>
 
-          {/* Testimonial Card */}
-          <div className="bg-background rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            {/* Decorative Elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-bl-full" />
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/5 rounded-tr-full" />
-
-            <div className="relative z-10">
               {/* Stars */}
-              <div className="flex items-center justify-center gap-1 mb-8">
-                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-primary text-primary" />
+              <div className="flex items-center gap-1 mb-4 mt-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
 
               {/* Content */}
-              <blockquote className="text-xl md:text-2xl text-foreground text-center leading-relaxed mb-8">
-                "{testimonials[currentIndex].content}"
+              <blockquote className="text-sm text-foreground leading-relaxed mb-6">
+                "{testimonial.content}"
               </blockquote>
 
               {/* Author */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="font-heading font-bold text-xl text-primary">
-                    {testimonials[currentIndex].name.charAt(0)}
+              <div>
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3">
+                  <span className="font-heading font-bold text-lg text-primary">
+                    {testimonial.name.charAt(0)}
                   </span>
                 </div>
-                <div className="font-heading font-bold text-lg text-foreground">
-                  {testimonials[currentIndex].name}
+                <div className="font-heading font-bold text-base text-foreground">
+                  {testimonial.name}
                 </div>
-                <div className="text-muted-foreground">
-                  {testimonials[currentIndex].role} - {testimonials[currentIndex].company}
+                <div className="text-xs text-muted-foreground">
+                  {testimonial.role} - {testimonial.company}
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Navigation Buttons */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={prevTestimonial}
-              className="w-12 h-12 bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-all duration-300"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            {/* Dots */}
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-primary w-8"
-                      : "bg-primary/30 hover:bg-primary/50"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={nextTestimonial}
-              className="w-12 h-12 bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground rounded-full flex items-center justify-center transition-all duration-300"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
+          ))}
         </div>
       </div>
     </section>

@@ -10,7 +10,12 @@ import {
   Factory, 
   Truck,
   ChevronRight,
-  CheckCircle
+  CheckCircle,
+  MapPin,
+  Zap,
+  Wheat,
+  Building2,
+  Store
 } from "lucide-react";
 
 const services = [
@@ -78,6 +83,19 @@ const services = [
       "Certificación NSC USA"
     ],
     color: "purple"
+  },
+  {
+    id: 6,
+    title: "Prácticas de Manejo 4x4 Modelo Mina",
+    description: "Entrenamiento especializado en conducción 4x4 en condiciones de operación minera. Disponible todos los días en Lima.",
+    icon: MapPin,
+    features: [
+      "Circuito modelo mina",
+      "Vehículos 4x4 especializados",
+      "Instructores certificados",
+      "Disponible todos los días en Lima"
+    ],
+    color: "green"
   }
 ];
 
@@ -99,6 +117,30 @@ const sectors = [
     title: "Transporte",
     description: "Transporte de carga, pasajeros y materiales peligrosos. Conductores profesionales certificados.",
     icon: Truck
+  },
+  {
+    id: 4,
+    title: "Energía",
+    description: "Generación eléctrica, hidroeléctricas y energías renovables. Seguridad operacional y manejo de riesgos.",
+    icon: Zap
+  },
+  {
+    id: 5,
+    title: "Agrícola",
+    description: "Agroindustria y agroexportación. Manejo seguro de maquinaria agrícola y transporte de productos.",
+    icon: Wheat
+  },
+  {
+    id: 6,
+    title: "Educación",
+    description: "Instituciones educativas y universidades. Programas de seguridad vial y primeros auxilios.",
+    icon: Building2
+  },
+  {
+    id: 7,
+    title: "Comercio",
+    description: "Retail, distribución y logística. Capacitación en seguridad operacional y prevención de riesgos.",
+    icon: Store
   }
 ];
 
@@ -108,7 +150,8 @@ const getColorClasses = (color: string) => {
     accent: { bg: "bg-accent/5", icon: "text-accent", badge: "bg-accent" },
     red: { bg: "bg-red-500/5", icon: "text-red-500", badge: "bg-red-500" },
     orange: { bg: "bg-orange-500/5", icon: "text-orange-500", badge: "bg-orange-500" },
-    purple: { bg: "bg-purple-500/5", icon: "text-purple-500", badge: "bg-purple-500" }
+    purple: { bg: "bg-purple-500/5", icon: "text-purple-500", badge: "bg-purple-500" },
+    green: { bg: "bg-green-500/5", icon: "text-green-500", badge: "bg-green-500" }
   };
   return colors[color] || colors.primary;
 };
@@ -191,7 +234,7 @@ const ServicesSection = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {sectors.map((sector) => {
               const Icon = sector.icon;
               

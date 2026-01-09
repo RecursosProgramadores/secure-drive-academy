@@ -10,7 +10,6 @@ import Services from "./pages/Services";
 import Courses from "./pages/Courses";
 import Clients from "./pages/Clients";
 import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
@@ -31,7 +30,6 @@ const App = () => (
           <Route path="/cursos" element={<Courses />} />
           <Route path="/clientes" element={<Clients />} />
           <Route path="/contacto" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
           <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
           <Route path="/terminos-de-uso" element={<TermsOfUse />} />
           <Route path="*" element={<NotFound />} />

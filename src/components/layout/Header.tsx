@@ -9,7 +9,6 @@ const navigation = [
   { name: "Inicio", href: "/" },
   { name: "Quiénes Somos", href: "/nosotros" },
   { name: "Cursos", href: "/cursos" },
-  { name: "Blog", href: "/blog" },
   { name: "Contacto", href: "/contacto" },
 ];
 
@@ -33,10 +32,8 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg py-2"
-          : "bg-transparent py-4"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md",
+        isScrolled ? "py-2" : "py-4"
       )}
     >
       <div className="section-container">
@@ -51,18 +48,16 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 className={cn(
-                  "px-4 py-2 font-heading text-base font-medium rounded-lg transition-all duration-300 hover:bg-primary/10",
+                  "px-5 py-2.5 font-heading text-lg font-semibold rounded-lg transition-all duration-300 hover:bg-primary/10 tracking-wide",
                   location.pathname === item.href
                     ? "text-primary"
-                    : isScrolled
-                    ? "text-foreground hover:text-primary"
-                    : "text-primary-foreground/90 hover:text-primary-foreground"
+                    : "text-gray-800 hover:text-primary"
                 )}
               >
                 {item.name}
@@ -72,16 +67,13 @@ const Header = () => {
 
           {/* CTA Button & Mobile Menu */}
           <div className="flex items-center gap-4">
-            <a href="tel:+51977959001" className={cn(
-              "hidden md:flex items-center gap-2 font-heading text-sm font-medium transition-colors duration-300",
-              isScrolled ? "text-foreground" : "text-primary-foreground"
-            )}>
-              <Phone className="w-4 h-4" />
+            <a href="tel:+51977959001" className="hidden md:flex items-center gap-2 font-heading text-base lg:text-lg font-semibold transition-colors duration-300 text-gray-800 hover:text-primary tracking-wide">
+              <Phone className="w-5 h-5" />
               <span>+51 977 959 001</span>
             </a>
             
             <Link to="/contacto">
-              <Button variant="hero" size="default" className="hidden sm:flex">
+              <Button variant="hero" size="default" className="hidden sm:flex text-base lg:text-lg font-semibold tracking-wide">
                 Solicitar Cotización
               </Button>
             </Link>
@@ -89,10 +81,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={cn(
-                "lg:hidden p-2 rounded-lg transition-colors duration-300",
-                isScrolled ? "text-foreground hover:bg-muted" : "text-primary-foreground hover:bg-primary-foreground/10"
-              )}
+              className="lg:hidden p-2 rounded-lg transition-colors duration-300 text-gray-800 hover:bg-gray-100"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
-import heroImage from "@/assets/hero-training.jpg";
-import drivingImage from "@/assets/driving-training.jpg";
-import firstAidImage from "@/assets/first-aid-training.jpg";
+import heroImage from "@/assets/carrousel1.jpeg";
+import drivingImage from "@/assets/carrousel2.jpeg";
+import firstAidImage from "@/assets/carrousel3.jpeg";
 import logo2 from "@/assets/nsc-menu.png";
+import logoHomologado from "@/assets/LOGO_DE_HOMOLOGADO.png";
+import logoNSC from "@/assets/National_Safety_Council.svg.png";
 
 const slides = [
   {
@@ -60,6 +62,8 @@ const slides = [
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+  const [currentOfferingIndex, setCurrentOfferingIndex] = useState(0);
 
   useEffect(() => {
     if (isPaused) return;
@@ -70,6 +74,30 @@ const HeroSection = () => {
 
     return () => clearInterval(interval);
   }, [isPaused]);
+
+  // Auto-rotate features in slide 1 (mobile only)
+  useEffect(() => {
+    const featuresCount = slides[0].features?.length || 0;
+    if (featuresCount === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentFeatureIndex((prev) => (prev + 1) % featuresCount);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-rotate offerings in slide 3 (mobile only)
+  useEffect(() => {
+    const offeringsCount = slides[2].offerings?.length || 0;
+    if (offeringsCount === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentOfferingIndex((prev) => (prev + 1) % offeringsCount);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -137,7 +165,7 @@ const HeroSection = () => {
                   <div className="text-center space-y-8 animate-fade-up">
                     <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full px-4 py-2 mb-4">
                       <span className="text-sm font-medium text-primary-foreground">
-                        Centro Autorizado NSC USA
+                        CENTRO DE ENTRENAMIENTO AUTORIZADO POR EL NSC DE USA
                       </span>
                     </div>
 
@@ -149,7 +177,8 @@ const HeroSection = () => {
                       {slide.subtitle}
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mt-12">
+                    {/* Features Grid - Desktop */}
+                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mt-12">
                       {slide.features?.map((feature, idx) => {
                         return (
                           <div 
@@ -173,6 +202,46 @@ const HeroSection = () => {
                       })}
                     </div>
 
+                    {/* Features Carousel - Mobile */}
+                    <div className="md:hidden relative max-w-sm mx-auto mt-12">
+                      <div className="relative overflow-hidden">
+                        {slide.features?.map((feature, idx) => (
+                          <div 
+                            key={idx}
+                            className={cn(
+                              "transition-all duration-500 ease-in-out",
+                              idx === currentFeatureIndex 
+                                ? "opacity-100 scale-100" 
+                                : "opacity-0 scale-95 absolute inset-0"
+                            )}
+                          >
+                            <div className="bg-gradient-to-br from-white/95 via-white/90 to-white/85 backdrop-blur-xl rounded-2xl p-8 border-2 border-white/40">
+                              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-primary/10 rounded-2xl" />
+                              <div className="relative z-10">
+                                <p className="text-lg font-bold text-gray-900 leading-snug text-center">
+                                  {feature.text}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Dots indicator */}
+                      <div className="flex justify-center gap-2 mt-4">
+                        {slide.features?.map((_, idx) => (
+                          <div 
+                            key={idx}
+                            className={cn(
+                              "w-2 h-2 rounded-full transition-all duration-300",
+                              idx === currentFeatureIndex 
+                                ? "bg-primary w-8" 
+                                : "bg-primary-foreground/30"
+                            )}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                       <Link to="/cursos">
                         <Button variant="hero" size="xl" className="group">
@@ -191,29 +260,60 @@ const HeroSection = () => {
 
                 {/* Slide 2: Estamos Acreditados */}
                 {slide.id === 2 && (
-                  <div className="text-center space-y-10 animate-fade-up">
+                  <div className="text-center space-y-8 md:space-y-10 animate-fade-up px-4">
                     
-                    <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-tight">
+                    <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-tight">
                       {slide.title}
                     </h1>
                     
-                    <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-3xl mx-auto">
+                    <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/80 max-w-3xl mx-auto">
                       {slide.subtitle}
                     </p>
 
-                    {/* Logo Container - Optimized for all devices */}
-                    <div className="flex items-center justify-center py-6 md:py-8">
-                      <div className="relative group w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[420px] mx-auto">
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/30 rounded-3xl blur-3xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+                    {/* Logos Container - Two logos side by side */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-12 py-6 md:py-8 max-w-4xl mx-auto">
+                      
+                      {/* Logo Homologado Hodelpe */}
+                      <div className="relative group w-full max-w-[140px] sm:max-w-[180px] md:max-w-[200px]">
+                        {/* Glow effect circular */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-green-500/30 to-blue-500/30 rounded-full blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-500" />
                         
-                        {/* Logo with background */}
-                        <div className="relative bg-[#30323e] rounded-2xl p-6 md:p-8 shadow-2xl group-hover:shadow-accent/20 transition-all duration-500">
+                        {/* Logo sin fondo */}
+                        <div className="relative">
                           <img 
-                            src={logo2} 
-                            alt="Logo Institución Acreditadora" 
-                            className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                            src={logoHomologado} 
+                            alt="Homologado Corporación Hodelpe SAC" 
+                            className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl"
                           />
+                        </div>
+                        
+                        {/* Label */}
+                        <div className="mt-3">
+                          <p className="text-xs md:text-sm font-semibold text-primary-foreground">
+                            Empresa Homologada
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Logo National Safety Council */}
+                      <div className="relative group w-full max-w-[140px] sm:max-w-[180px] md:max-w-[200px]">
+                        {/* Glow effect circular */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-500/30 to-orange-500/30 rounded-full blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-500" />
+                        
+                        {/* Logo sin fondo */}
+                        <div className="relative">
+                          <img 
+                            src={logoNSC} 
+                            alt="National Safety Council" 
+                            className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl"
+                          />
+                        </div>
+                        
+                        {/* Label */}
+                        <div className="mt-3">
+                          <p className="text-xs md:text-sm font-semibold text-primary-foreground">
+                            Certificación Internacional NSC
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -245,7 +345,8 @@ const HeroSection = () => {
                       {slide.subtitle}
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mt-12">
+                    {/* Offerings Grid - Desktop */}
+                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mt-12">
                       {slide.offerings?.map((offering, idx) => (
                         <div 
                           key={idx}
@@ -268,6 +369,49 @@ const HeroSection = () => {
                           <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-tr from-transparent via-white/20 to-transparent" />
                         </div>
                       ))}
+                    </div>
+
+                    {/* Offerings Carousel - Mobile */}
+                    <div className="md:hidden relative max-w-sm mx-auto mt-12">
+                      <div className="relative overflow-hidden">
+                        {slide.offerings?.map((offering, idx) => (
+                          <div 
+                            key={idx}
+                            className={cn(
+                              "transition-all duration-500 ease-in-out",
+                              idx === currentOfferingIndex 
+                                ? "opacity-100 scale-100" 
+                                : "opacity-0 scale-95 absolute inset-0"
+                            )}
+                          >
+                            <div className="bg-gradient-to-br from-white/95 via-white/90 to-white/85 backdrop-blur-xl rounded-2xl p-8 border-2 border-white/40">
+                              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-primary/10 rounded-2xl" />
+                              <div className="relative z-10">
+                                <h3 className="text-xl font-heading font-bold text-gray-900 mb-3 text-center">
+                                  {offering.title}
+                                </h3>
+                                <p className="text-sm text-gray-700 leading-relaxed text-center">
+                                  {offering.description}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Dots indicator */}
+                      <div className="flex justify-center gap-2 mt-4">
+                        {slide.offerings?.map((_, idx) => (
+                          <div 
+                            key={idx}
+                            className={cn(
+                              "w-2 h-2 rounded-full transition-all duration-300",
+                              idx === currentOfferingIndex 
+                                ? "bg-primary w-8" 
+                                : "bg-primary-foreground/30"
+                            )}
+                          />
+                        ))}
+                      </div>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -305,23 +449,6 @@ const HeroSection = () => {
           >
             <ChevronRight className="w-6 h-6 text-primary-foreground" />
           </button>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-12">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={cn(
-                  "transition-all duration-300 rounded-full",
-                  index === currentSlide
-                    ? "w-12 h-3 bg-accent"
-                    : "w-3 h-3 bg-primary-foreground/30 hover:bg-primary-foreground/50"
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
 
