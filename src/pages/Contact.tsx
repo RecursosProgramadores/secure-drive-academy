@@ -18,7 +18,6 @@ import wstp from "@/assets/wstp.svg";
 
 const Contact = () => {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,16 +29,50 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Validar teléfono (solo números)
+    const phoneRegex = /^[0-9\s+()-]*$/;
+    if (!phoneRegex.test(formData.phone)) {
+      toast({
+        title: "Error en el teléfono",
+        description: "El teléfono debe contener solo números y símbolos válidos (+, -, espacios)",
+        variant: "destructive",
+      });
+      return;
+    }
 
-    toast({
-      title: "¡Mensaje Enviado!",
-      description: "Nos pondremos en contacto contigo en menos de 24 horas.",
-    });
+    // Validar longitud mínima de mensaje
+    if (formData.message.trim().length < 10) {
+      toast({
+        title: "Mensaje muy corto",
+        description: "Por favor, describe con más detalle tus necesidades (mínimo 10 caracteres)",
+        variant: "destructive",
+      });
+      return;
+    }
 
+    // Construir mensaje para WhatsApp con todos los campos
+    const message = `Hola, solicito información y cotización de SOUT Training Center.
+
+📋 *DATOS DEL CONTACTO:*
+👤 Nombre: ${formData.name.trim()}
+🏢 Empresa: ${formData.company.trim() || 'No especificado'}
+📧 Email: ${formData.email.trim()}
+📱 Teléfono: ${formData.phone.trim()}
+
+📚 *CURSO DE INTERÉS:*
+${formData.course ? formData.course.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()) : 'No especificado'}
+
+💬 *MENSAJE:*
+${formData.message.trim()}
+
+Espero su respuesta. Gracias.`;
+
+    // Abrir WhatsApp con el mensaje
+    const whatsappUrl = `https://wa.me/51977959001?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+
+    // Limpiar formulario
     setFormData({
       name: "",
       email: "",
@@ -48,7 +81,11 @@ const Contact = () => {
       course: "",
       message: "",
     });
-    setIsSubmitting(false);
+
+    toast({
+      title: "¡Redirigiendo a WhatsApp!",
+      description: "Te estamos conectando con nuestro equipo de atención.",
+    });
   };
 
   return (
@@ -61,15 +98,15 @@ const Contact = () => {
           <div className="section-container relative">
             <div className="max-w-3xl">
               <span className="inline-block font-heading text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-                Contáctenos
+                Contáctanos
               </span>
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
                 Estamos Aquí para{" "}
                 <span className="text-primary">Ayudarte</span>
               </h1>
               <p className="text-xl text-secondary-foreground/80">
-                ¿Tienes preguntas sobre nuestros cursos? ¿Necesitas una cotización 
-                personalizada? Contáctanos y te responderemos en menos de 24 horas.
+                ¿Tienes preguntas sobre nuestros cursos? ¿Necesitas una cotización personalizada? 
+                Contáctanos y te responderemos en menos de 24 horas.
               </p>
             </div>
           </div>
@@ -219,12 +256,14 @@ const Contact = () => {
                       </label>
                       <Input
                         type="text"
-                        placeholder="Tu nombre"
+                        placeholder="Tu nombre completo"
                         value={formData.name}
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
                         }
                         required
+                        minLength={3}
+                        maxLength={100}
                       />
                     </div>
                     <div>
@@ -233,11 +272,12 @@ const Contact = () => {
                       </label>
                       <Input
                         type="text"
-                        placeholder="Nombre de la empresa"
+                        placeholder="Nombre de tu empresa (opcional)"
                         value={formData.company}
                         onChange={(e) =>
                           setFormData({ ...formData, company: e.target.value })
                         }
+                        maxLength={100}
                       />
                     </div>
                   </div>
@@ -249,7 +289,7 @@ const Contact = () => {
                       </label>
                       <Input
                         type="email"
-                        placeholder="tu@email.com"
+                        placeholder="ejemplo@correo.com"
                         value={formData.email}
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
@@ -263,12 +303,14 @@ const Contact = () => {
                       </label>
                       <Input
                         type="tel"
-                        placeholder="+51 999 999 999"
+                        placeholder="999999999"
                         value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
+                        onChange={(e) => {
+                          const value = e.target.value.replace(/[^0-9+\s()-]/g, '');
+                          setFormData({ ...formData, phone: value });
+                        }}
                         required
+                        maxLength={15}
                       />
                     </div>
                   </div>
@@ -282,16 +324,17 @@ const Contact = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, course: e.target.value })
                       }
-                      className="w-full bg-background border border-input rounded-md px-4 py-2 text-sm focus:ring-2 focus:ring-primary"
+                      className="w-full bg-background border border-input rounded-md px-4 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all"
                     >
-                      <option value="">Selecciona un curso</option>
-                      <option value="manejo-defensivo">Manejo Defensivo NSC</option>
-                      <option value="4x4">Manejo 4x4 Minería</option>
-                      <option value="primeros-auxilios">Primeros Auxilios - RCP</option>
-                      <option value="extintores">Uso de Extintores</option>
-                      <option value="fatiga">Fatiga y Somnolencia</option>
-                      <option value="instructores">Formación de Instructores</option>
-                      <option value="otro">Otro</option>
+                      <option value="">Selecciona un curso (opcional)</option>
+                      <option value="manejo-defensivo-nsc">Manejo Defensivo NSC</option>
+                      <option value="manejo-4x4-mineria">Manejo 4x4 Minería</option>
+                      <option value="primeros-auxilios-rcp">Primeros Auxilios - RCP - DEA</option>
+                      <option value="uso-extintores">Uso de Extintores</option>
+                      <option value="fatiga-somnolencia">Fatiga y Somnolencia</option>
+                      <option value="formacion-instructores">Formación de Instructores NSC</option>
+                      <option value="practicas-modelo-mina">Prácticas Modelo Mina Lima</option>
+                      <option value="otro">Otro servicio</option>
                     </select>
                   </div>
 
@@ -300,12 +343,14 @@ const Contact = () => {
                       Mensaje *
                     </label>
                     <Textarea
-                      placeholder="Cuéntanos sobre tus necesidades de capacitación, cantidad de participantes, fechas preferidas..."
+                      placeholder="Cuéntanos sobre tus necesidades: cantidad de participantes, fechas preferidas, ubicación, modalidad (presencial/virtual), etc."
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
                       required
+                      minLength={10}
+                      maxLength={500}
                       rows={5}
                     />
                   </div>
@@ -315,16 +360,9 @@ const Contact = () => {
                     variant="hero"
                     size="lg"
                     className="w-full"
-                    disabled={isSubmitting}
                   >
-                    {isSubmitting ? (
-                      "Enviando..."
-                    ) : (
-                      <>
-                        Enviar Solicitud
-                        <Send className="w-5 h-5" />
-                      </>
-                    )}
+                    Enviar Solicitud
+                    <Send className="w-5 h-5" />
                   </Button>
                 </form>
               </div>

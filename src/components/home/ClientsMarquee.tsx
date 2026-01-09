@@ -76,23 +76,23 @@ const clients = [
 
 const ClientsMarquee = () => {
   return (
-    <section className="py-16 bg-background border-t border-border overflow-hidden">
+    <section className="py-12 sm:py-14 md:py-16 bg-background border-t border-border overflow-hidden">
       <div className="section-container">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-block font-heading text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12 px-4">
+          <span className="inline-block font-heading text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider mb-4">
             Nuestros Clientes
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
             Empresas que <span className="text-primary">Confían</span> en Nosotros
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm md:text-base text-muted-foreground">
             Más de 500 empresas líderes en los sectores minero, industrial y de transporte
           </p>
         </div>
 
         {/* Primera fila - Izquierda a Derecha */}
-        <div className="relative mb-8">
+        <div className="relative mb-6 md:mb-8">
           <div className="flex animate-marquee-left hover:pause-marquee">
             {/* Duplicamos los clientes 3 veces para continuidad */}
             {[...Array(3)].map((_, repeatIndex) => (

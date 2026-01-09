@@ -33,7 +33,7 @@ const Header = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md",
-        isScrolled ? "py-2" : "py-4"
+        isScrolled ? "py-1.5 sm:py-2" : "py-2 sm:py-3 md:py-4"
       )}
     >
       <div className="section-container">
@@ -43,7 +43,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="SOUT Training Center" 
-              className="h-16 md:h-20 lg:h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -72,11 +72,15 @@ const Header = () => {
               <span>+51 977 959 001</span>
             </a>
             
-            <Link to="/contacto">
+            <a
+              href="https://wa.me/51977959001?text=Hola%2C%20estoy%20interesado%20en%20solicitar%20una%20cotizaci%C3%B3n%20para%20capacitaciones%20en%20SOUT%20Training%20Center.%0A%0A%C2%BFPodr%C3%ADan%20brindarme%20informaci%C3%B3n%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="hero" size="default" className="hidden sm:flex text-base lg:text-lg font-semibold tracking-wide">
                 Solicitar Cotización
               </Button>
-            </Link>
+            </a>
 
             {/* Mobile Menu Button */}
             <button
@@ -111,11 +115,17 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <Link to="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button variant="hero" size="lg" className="w-full mt-4">
+            <a
+              href="https://wa.me/51977959001?text=Hola%2C%20estoy%20interesado%20en%20solicitar%20una%20cotizaci%C3%B3n%20para%20capacitaciones%20en%20SOUT%20Training%20Center.%0A%0A%C2%BFPodr%C3%ADan%20brindarme%20informaci%C3%B3n%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full mt-4"
+            >
+              <Button variant="hero" size="lg" className="w-full">
                 Solicitar Cotización
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

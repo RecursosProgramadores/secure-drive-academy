@@ -7,7 +7,6 @@ import { useToast } from "@/hooks/use-toast";
 
 const CTASection = () => {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,18 +16,31 @@ const CTASection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    
+    // Construir mensaje para WhatsApp
+    const message = `Hola, solicito una cotización de SOUT Training Center.
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+📋 *Datos de contacto:*
+👤 Nombre: ${formData.name}
+📧 Email: ${formData.email}
+📱 Teléfono: ${formData.phone}
+
+💬 *Mensaje:*
+${formData.message}
+
+Espero su respuesta. Gracias.`;
+
+    // Abrir WhatsApp con el mensaje
+    const whatsappUrl = `https://wa.me/51977959001?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+
+    // Limpiar formulario
+    setFormData({ name: "", email: "", phone: "", message: "" });
 
     toast({
-      title: "¡Mensaje Enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
+      title: "¡Redirigiendo a WhatsApp!",
+      description: "Te estamos conectando con nuestro equipo.",
     });
-
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
   };
 
   return (
@@ -44,23 +56,23 @@ const CTASection = () => {
       </div>
 
       <div className="section-container relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Content */}
-          <div>
-            <span className="inline-block font-heading text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+          <div className="px-4 md:px-0">
+            <span className="inline-block font-heading text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider mb-4">
               Contáctenos
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
               ¿Listo para{" "}
               <span className="text-primary">Capacitar</span> a Tu Equipo?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
               Solicita una cotización personalizada para tu empresa. Nuestro equipo 
               te contactará en menos de 24 horas con una propuesta adaptada a tus necesidades.
             </p>
 
             {/* Benefits */}
-            <div className="space-y-4 mb-8">
+            <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
               {[
                 "Cotizaciones sin compromiso",
                 "Cursos presenciales, virtuales o grabados",
@@ -68,35 +80,35 @@ const CTASection = () => {
                 "Precios especiales para empresas",
               ].map((benefit, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                  <span className="text-foreground">{benefit}</span>
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-accent flex-shrink-0" />
+                  <span className="text-sm md:text-base text-foreground">{benefit}</span>
                 </div>
               ))}
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               <a
                 href="tel:+51977959001"
                 className="flex items-center gap-3 text-foreground hover:text-primary transition-colors duration-300"
               >
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-primary" />
+                <div className="w-9 h-9 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 </div>
-                <span>+51 977 959 001</span>
+                <span className="text-sm md:text-base">+51 977 959 001</span>
               </a>
               <a
                 href="mailto:capacitaciones@soutrainingcenter.com"
                 className="flex items-center gap-3 text-foreground hover:text-primary transition-colors duration-300"
               >
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-primary" />
+                <div className="w-9 h-9 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 </div>
-                <span>capacitaciones@soutrainingcenter.com</span>
+                <span className="text-sm md:text-base break-all">capacitaciones@soutrainingcenter.com</span>
               </a>
               <div className="flex items-start gap-3 text-foreground">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <div className="w-9 h-9 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 </div>
                 <span>Av. Alameda del Corregidor 1769, La Molina, Lima</span>
               </div>
@@ -173,16 +185,9 @@ const CTASection = () => {
                 variant="hero"
                 size="lg"
                 className="w-full"
-                disabled={isSubmitting}
               >
-                {isSubmitting ? (
-                  "Enviando..."
-                ) : (
-                  <>
-                    Enviar Solicitud
-                    <Send className="w-5 h-5" />
-                  </>
-                )}
+                Enviar Solicitud
+                <Send className="w-5 h-5" />
               </Button>
             </form>
           </div>

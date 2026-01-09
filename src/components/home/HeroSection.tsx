@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
-import heroImage from "@/assets/carrousel1.jpeg";
-import drivingImage from "@/assets/carrousel2.jpeg";
+import heroImage from "@/assets/curso1.jpeg";
+import drivingImage from "@/assets/carrousel1.jpeg";
 import firstAidImage from "@/assets/carrousel3.jpeg";
-import logo2 from "@/assets/nsc-menu.png";
 import logoHomologado from "@/assets/LOGO_DE_HOMOLOGADO.png";
 import logoNSC from "@/assets/National_Safety_Council.svg.png";
 
@@ -144,10 +143,10 @@ const HeroSection = () => {
       </div>
 
       {/* Carousel Content */}
-      <div className="relative section-container py-32 md:py-40 w-full">
+      <div className="relative section-container py-20 sm:py-24 md:py-32 lg:py-40 w-full">
         <div className="max-w-6xl mx-auto">
           {/* Slides Container */}
-          <div className="relative min-h-[500px] flex items-center">
+          <div className="relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px] flex items-center">
             {slides.map((slide, index) => (
               <div
                 key={slide.id}
@@ -163,8 +162,8 @@ const HeroSection = () => {
                 {/* Slide 1: Cursos y Certificaciones */}
                 {slide.id === 1 && (
                   <div className="text-center space-y-8 animate-fade-up">
-                    <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full px-4 py-2 mb-4">
-                      <span className="text-sm font-medium text-primary-foreground">
+                    <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4">
+                      <span className="text-xs sm:text-sm font-medium text-primary-foreground text-center">
                         CENTRO DE ENTRENAMIENTO AUTORIZADO POR EL NSC DE USA
                       </span>
                     </div>
@@ -249,11 +248,15 @@ const HeroSection = () => {
                           <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </Link>
-                      <Link to="/contacto">
+                      <a
+                        href="https://wa.me/51977959001?text=Hola%2C%20estoy%20interesado%20en%20solicitar%20una%20cotizaci%C3%B3n%20para%20los%20*Cursos%20de%20Capacitaci%C3%B3n%20NSC*.%0A%0AMe%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%3A%0A%E2%9C%85%20Cursos%20disponibles%0A%E2%9C%85%20Certificaciones%20internacionales%0A%E2%9C%85%20Modalidades%20%28presencial%2C%20virtual%29%0A%E2%9C%85%20Precios%20y%20descuentos%20empresariales%0A%0A%C2%BFPodr%C3%ADan%20ayudarme%3F"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Button variant="heroOutline" size="xl">
                           Solicitar Cotización
                         </Button>
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 )}
@@ -262,11 +265,11 @@ const HeroSection = () => {
                 {slide.id === 2 && (
                   <div className="text-center space-y-8 md:space-y-10 animate-fade-up px-4">
                     
-                    <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-tight">
+                    <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-tight px-4">
                       {slide.title}
                     </h1>
                     
-                    <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/80 max-w-3xl mx-auto">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/80 max-w-3xl mx-auto px-4">
                       {slide.subtitle}
                     </p>
 
@@ -324,11 +327,15 @@ const HeroSection = () => {
                           Conocer Más
                         </Button>
                       </Link>
-                      <Link to="/contacto">
+                      <a
+                        href="https://wa.me/51977959001?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20las%20*Acreditaciones%20y%20Certificaciones*%20de%20SOUT%20Training%20Center.%0A%0AEstoy%20interesado%20en%20conocer%3A%0A%E2%9C%85%20Certificaci%C3%B3n%20NSC%20USA%0A%E2%9C%85%20Homologaci%C3%B3n%20empresarial%0A%E2%9C%85%20Validez%20internacional%0A%E2%9C%85%20Requisitos%20y%20proceso%0A%0AGracias."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Button variant="heroOutline" size="xl">
                           Solicitar Información
                         </Button>
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 )}
@@ -421,11 +428,15 @@ const HeroSection = () => {
                           <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </Link>
-                      <Link to="/contacto">
+                      <a
+                        href="https://wa.me/51977959001?text=Hola%2C%20estoy%20interesado%20en%20los%20servicios%20de%20SOUT%20Training%20Center.%0A%0AMe%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%3A%0A%F0%9F%93%8B%20Capacitaci%C3%B3n%20profesional%0A%F0%9F%8E%93%20Certificaciones%0A%F0%9F%92%BC%20Consultor%C3%ADa%20empresarial%0A%F0%9F%A4%9D%20Soporte%20continuo%0A%0A%C2%BFPodr%C3%ADan%20contactarme%3F"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Button variant="heroOutline" size="xl">
                           Contactar Ahora
                         </Button>
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 )}
@@ -436,18 +447,18 @@ const HeroSection = () => {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/20 rounded-full p-3 hover:bg-accent hover:border-accent transition-all duration-300 shadow-lg"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/20 rounded-full p-2 sm:p-3 hover:bg-accent hover:border-accent transition-all duration-300 shadow-lg"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6 text-primary-foreground" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
           </button>
 
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/20 rounded-full p-3 hover:bg-accent hover:border-accent transition-all duration-300 shadow-lg"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/20 rounded-full p-2 sm:p-3 hover:bg-accent hover:border-accent transition-all duration-300 shadow-lg"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6 text-primary-foreground" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
           </button>
         </div>
       </div>

@@ -44,22 +44,22 @@ const TestimonialsSection = () => {
     <section className="section-padding bg-secondary text-secondary-foreground overflow-hidden">
       <div className="section-container">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block font-heading text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 px-4">
+          <span className="inline-block font-heading text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider mb-4">
             Testimonios
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4 md:mb-6">
             Lo Que Dicen{" "}
             <span className="text-primary">Nuestros Clientes</span>
           </h2>
-          <p className="text-lg text-secondary-foreground/80">
+          <p className="text-base md:text-lg text-secondary-foreground/80">
             Empresas líderes confían en SOUT Training Center para la capacitación 
             de sus equipos en seguridad vial y manejo defensivo.
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}

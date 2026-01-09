@@ -9,15 +9,15 @@ const Footer = () => {
   return (
     <footer className="bg-secondary text-secondary-foreground">
       {/* Main Footer */}
-      <div className="section-container section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="section-container py-12 sm:py-16 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">{" "}
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center group">
               <img 
                 src={logo} 
                 alt="SOUT Training Center" 
-                className="h-16 md:h-20 lg:h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
             <p className="text-secondary-foreground/80 text-sm leading-relaxed">
@@ -170,13 +170,13 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="bg-foreground/5">
-        <div className="section-container py-4">
-          <div className="flex flex-col items-center justify-center gap-2 text-secondary-foreground/60">
-            {/* Copyright and links - at top */}
-            <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
+        <div className="section-container py-4 md:py-6">
+          <div className="flex flex-col items-center justify-center gap-3 md:gap-4 text-secondary-foreground/60">
+            {/* Copyright and links */}
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs sm:text-sm text-center">
               <p>© 2026 SOUT Training Center. Todos los derechos reservados.</p>
               <div className="hidden md:block text-secondary-foreground/40">|</div>
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 md:gap-6">
                 <Link to="/politica-de-privacidad" className="hover:text-primary transition-colors duration-300">
                   Política de Privacidad
                 </Link>
@@ -191,13 +191,13 @@ const Footer = () => {
               href="https://wa.me/51912603970?text=Hola%20Fly%2C%20vengo%20de%20SOUT%20TRAINING%20CENTER%2C%20estoy%20interesado%20en%20crear%20mi%20p%C3%A1gina%20web%20profesional"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-300"
+              className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity duration-300"
             >
-              <span className="text-sm font-medium">Desarrollado por</span>
+              <span className="text-xs sm:text-sm font-medium">Desarrollado por</span>
               <img 
                 src={marca} 
                 alt="1FLY" 
-                className="h-8 w-auto object-contain"
+                className="h-6 sm:h-8 w-auto object-contain"
               />
             </a>
           </div>

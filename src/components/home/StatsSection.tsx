@@ -33,7 +33,7 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section className="relative py-20 bg-muted overflow-hidden">
+    <section className="relative py-12 sm:py-16 md:py-20 bg-muted overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -42,20 +42,20 @@ const StatsSection = () => {
       </div>
 
       <div className="section-container relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="group relative bg-background rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-border"
+              className="group relative bg-background rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-border"
             >
               {/* Icon */}
               <div
-                className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 ${
+                className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center mb-4 md:mb-6 transition-transform duration-300 group-hover:scale-110 ${
                   stat.color === "primary" ? "bg-primary/10" : "bg-accent/10"
                 }`}
               >
                 <stat.icon
-                  className={`w-7 h-7 ${
+                  className={`w-6 h-6 md:w-7 md:h-7 ${
                     stat.color === "primary" ? "text-primary" : "text-accent"
                   }`}
                 />
@@ -63,7 +63,7 @@ const StatsSection = () => {
 
               {/* Value */}
               <div
-                className={`font-heading text-4xl font-black mb-2 ${
+                className={`font-heading text-3xl md:text-4xl font-black mb-2 ${
                   stat.color === "primary" ? "text-primary" : "text-accent"
                 }`}
               >
@@ -71,12 +71,12 @@ const StatsSection = () => {
               </div>
 
               {/* Label */}
-              <div className="font-heading font-semibold text-lg text-foreground mb-2">
+              <div className="font-heading font-semibold text-base md:text-lg text-foreground mb-2">
                 {stat.label}
               </div>
 
               {/* Description */}
-              <p className="text-sm text-muted-foreground">{stat.description}</p>
+              <p className="text-xs md:text-sm text-muted-foreground">{stat.description}</p>
 
               {/* Decorative Corner */}
               <div

@@ -57,22 +57,22 @@ const CoursesSection = () => {
     <section className="section-padding bg-background">
       <div className="section-container">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block font-heading text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 px-4">
+          <span className="inline-block font-heading text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider mb-4">
             Nuestros Programas
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
             Cursos de{" "}
             <span className="text-primary">Capacitación Especializada</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground">
             Programas certificados internacionalmente diseñados para formar profesionales 
             competentes en seguridad vial, manejo defensivo y prevención de riesgos.
           </p>
         </div>
 
         {/* Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {courses.map((course, index) => (
             <div
               key={course.id}
@@ -80,7 +80,7 @@ const CoursesSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Image */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-48 md:h-56 overflow-hidden">
                 <img
                   src={course.image}
                   alt={course.title}
@@ -95,8 +95,8 @@ const CoursesSection = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+              <div className="p-5 md:p-6">
+                <h3 className="font-heading text-lg md:text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                   {course.title}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-6 line-clamp-3">
@@ -104,19 +104,19 @@ const CoursesSection = () => {
                 </p>
 
                 {/* Meta Info */}
-                <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6 text-xs md:text-sm text-muted-foreground flex-wrap">
                   <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-primary" />
+                    <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary flex-shrink-0" />
                     <span>{course.duration}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Users className="w-4 h-4 text-accent" />
+                    <Users className="w-3.5 h-3.5 md:w-4 md:h-4 text-accent flex-shrink-0" />
                     <span>{course.audience}</span>
                   </div>
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <a
                     href={`https://wa.me/51977959001?text=${encodeURIComponent(
                       `Hola, estoy interesado en el curso: ${course.title}\n\nDuración: ${course.duration}\nCertificación: ${course.certification}\nModalidad: ${course.modality}\n\n¿Podrían brindarme más información?`
@@ -125,12 +125,12 @@ const CoursesSection = () => {
                     rel="noopener noreferrer"
                     className="flex-1"
                   >
-                    <Button variant="default" className="w-full">
+                    <Button variant="default" className="w-full text-sm md:text-base">
                       Iniciar
                     </Button>
                   </a>
                   <Link to="/contacto" className="flex-1">
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="w-full text-sm md:text-base">
                       Contacto
                     </Button>
                   </Link>
