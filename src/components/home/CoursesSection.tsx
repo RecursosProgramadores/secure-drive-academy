@@ -119,25 +119,80 @@ const CoursesSection = () => {
                 <div className="flex flex-col sm:flex-row gap-2">
                   <a
                     href={`https://wa.me/51977959001?text=${encodeURIComponent(
-                      `Hola, estoy interesado en el curso: ${course.title}\n\nDuración: ${course.duration}\nCertificación: ${course.certification}\nModalidad: ${course.modality}\n\n¿Podrían brindarme más información?`
+                      `Hola, estoy interesado en el curso: ${course.title}\n\nDuración: ${course.duration}\nCertificación: ${course.certification}\nModalidad: ${course.modality}\n\n¿Podrían brindarme más información y cotización?`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1"
                   >
                     <Button variant="default" className="w-full text-sm md:text-base">
-                      Iniciar
+                      Contactar
                     </Button>
                   </a>
-                  <Link to="/contacto" className="flex-1">
+                  <Link to="/cursos" className="flex-1">
                     <Button variant="outline" className="w-full text-sm md:text-base">
-                      Contacto
+                      Ver Más
                     </Button>
                   </Link>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* MATPEL Information Card */}
+        <div className="mt-12 md:mt-16 max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 rounded-2xl border-2 border-primary/20 p-6 md:p-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              {/* Content Section */}
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold">
+                    Certificado
+                  </div>
+                  <h3 className="font-heading text-xl md:text-2xl lg:text-3xl font-bold text-foreground">
+                    Curso de MATPEL (Materiales Peligrosos)
+                  </h3>
+                </div>
+                
+                <p className="text-muted-foreground text-sm md:text-base mb-6">
+                  Curso de MATPEL nivel advertencia presencial o virtual online. 
+                  Capacitación especializada para el manejo seguro de materiales peligrosos según normativa vigente.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm md:text-base">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="font-medium text-foreground">3 horas</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="w-5 h-5 text-accent flex-shrink-0" />
+                    <span className="font-medium text-foreground">Conductores y personal</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Award className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="font-medium text-foreground">Presencial / Virtual</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="md:flex-shrink-0 md:w-64">
+                <a
+                  href={`https://wa.me/51977959001?text=${encodeURIComponent(
+                    `Hola, estoy interesado en el Curso de MATPEL (Materiales Peligrosos)\n\nDuración: 3 horas\nModalidad: Presencial o Virtual Online\nOrientado a: Conductores y personal que manipula materiales peligrosos\n\n¿Podrían brindarme más información y cotización?`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Button variant="default" size="lg" className="w-full">
+                    Contactar por WhatsApp
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* View All Button */}

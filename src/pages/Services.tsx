@@ -11,7 +11,7 @@ import {
   ChevronRight,
   CheckCircle,
 } from "lucide-react";
-import heroImage from "@/assets/hero-training.jpg";
+import heroImage from "@/assets/historial.jpeg";
 
 const services = [
   {
@@ -164,7 +164,7 @@ const Services = () => {
           <div className="section-container">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Sectores que Atendemos ff fdfddf 
+                Sectores que Atendemos
               </h2>
               <p className="text-muted-foreground">
                 Experiencia especializada en los sectores más exigentes del país.

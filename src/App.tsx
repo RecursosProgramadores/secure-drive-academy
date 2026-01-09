@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Courses from "./pages/Courses";
-import Clients from "./pages/Clients";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -28,7 +27,6 @@ const App = () => (
           <Route path="/nosotros" element={<About />} />
           <Route path="/servicios" element={<Services />} />
           <Route path="/cursos" element={<Courses />} />
-          <Route path="/clientes" element={<Clients />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
           <Route path="/terminos-de-uso" element={<TermsOfUse />} />
