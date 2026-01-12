@@ -28,6 +28,7 @@ import defensivo from "@/assets/defensivo.jpeg";
 import fatigaImg from "@/assets/fatiga.jpeg";
 import instructorImg from "@/assets/intructor.jpeg";
 import practicaslima from "@/assets/modelolima.jpeg";
+import operador from "@/assets/operador.jpeg";
 
 const courses = [
   {
@@ -172,6 +173,19 @@ const courses = [
     image: practicaslima,
     certification: "Certificado",
     icon: Mountain,
+  },
+  {
+    id: 12,
+    title: "Operación Segura de Montacargas Presencial",
+    description:
+      "Curso presencial de 20 horas teórico-práctico para operadores de montacargas. Entrenamiento todos los días en Lima. Doble certificación de NSC y SOUT Training Center.",
+    duration: "20 horas",
+    audience: "Operadores de montacargas",
+    modality: ["presencial"],
+    sector: ["industria", "transporte"],
+    image: operador,
+    certification: "NSC/SOUT",
+    icon: Truck,
   },
 ];
 
