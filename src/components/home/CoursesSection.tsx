@@ -12,6 +12,7 @@ import defensivo from "@/assets/defensivo.jpeg";
 import fatigaImg from "@/assets/fatiga.jpeg";
 import instructorImg from "@/assets/intructor.jpeg";
 import practicaslima from "@/assets/modelolima.jpeg";
+import operador from "@/assets/operador.jpeg";
 
 const courses = [
   {
@@ -50,6 +51,18 @@ const courses = [
     certification: "Certificado",
     featured: true,
   },
+  {
+    id: 4,
+    title: "Operación Segura de Montacargas Presencial",
+    description:
+      "Curso presencial de 20 horas teórico-práctico para operadores de montacargas. Entrenamiento todos los días en Lima. Doble certificación de NSC y SOUT Training Center.",
+    duration: "20 horas",
+    audience: "Operadores de montacargas",
+    modality: "Presencial",
+    image: operador,
+    certification: "NSC/SOUT",
+    featured: false,
+  },
 ];
 
 const CoursesSection = () => {
@@ -73,7 +86,7 @@ const CoursesSection = () => {
 
         {/* Courses Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {courses.map((course, index) => (
+          {courses.filter(course => course.featured).map((course, index) => (
             <div
               key={course.id}
               className="group relative bg-card rounded-2xl overflow-hidden shadow-lg card-hover border border-border"
